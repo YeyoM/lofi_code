@@ -1,0 +1,19 @@
+.songBar {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  align-items: center;
+  padding: 10px;
+}
+
+.left {
+  margin-left: 5rem;
+}
+
+.right {
+  margin-right: 5rem;
+}
+
+.bottom {
+  margin-bottom: 0;
+}
