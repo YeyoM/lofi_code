@@ -17,7 +17,50 @@ export default function SongBar({ songs }) {
   const intervalRef = useRef()
   const isReady = useRef(false)
 
-  const { duration } = audioRef.current
+  useEffect(() => {
+    if (isPlaying) {
+      audioRef.current.play();
+    } else {
+      audioRef.current.pause();
+    }
+  }, [isPlaying]);
+
+  useEffect(() => {
+    // Pause and clean up on unmount
+    return () => {
+      audioRef.current.pause();
+      clearInterval(intervalRef.current);
+    }
+  }, []);
+
+  useEffect(() => {
+    audioRef.current.pause();
+  
+    audioRef.current = new Audio(path);
+    setSongProgress(audioRef.current.currentTime);
+  
+    if (isReady.current) {
+      audioRef.current.play();
+      setIsPlaying(true);
+      startTimer();
+    } else {
+      // Set the isReady ref as true for the next pass
+      isReady.current = true;
+    }
+  }, [songIndex]);
+
+  const startTimer = () => {
+	  // Clear any timers already running
+	  clearInterval(intervalRef.current);
+
+	  intervalRef.current = setInterval(() => {
+	    if (audioRef.current.ended) {
+	      toNextSong();
+	    } else {
+	      setSongProgress(audioRef.current.currentTime);
+	    }
+	  }, [1000]);
+	}
 
   const toPrevSong = () => {
     if (songIndex - 1 < 0) {
@@ -43,7 +86,6 @@ export default function SongBar({ songs }) {
         <p>Currently Playing: {title}</p>
         <p className={classes.bottom}>By: {author || "unknown"}</p>
       </div>
-
       <div className={classes.right}>
         <AudioControls
             isPlaying={isPlaying}
@@ -52,7 +94,6 @@ export default function SongBar({ songs }) {
             onPlayPauseClick={setIsPlaying}
         />
       </div>
-
     </div>
   )
 }
