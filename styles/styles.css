@@ -1,0 +1,10 @@
+*{
+  -ms-overflow-style: none;
+  background-color: #272b36;
+  border-radius: 0px !important;
+  color: #fff;
+}
+
+::-webkit-scrollbar {
+  display: none;
+}
