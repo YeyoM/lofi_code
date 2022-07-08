@@ -1,4 +1,5 @@
-import AudioControls from './AudioControls'
+import AudioControlsCenter from './audioControlsCenter.jsx'
+import AudioControlsRight from './audioControlsRight.jsx'
 
 import { useState, useEffect, useRef } from 'react'
 
@@ -47,7 +48,7 @@ export default function SongBar({ songs }) {
       // Set the isReady ref as true for the next pass
       isReady.current = true;
     }
-  }, [songIndex]);
+  }, [songIndex, path]);
 
   const startTimer = () => {
 	  // Clear any timers already running
@@ -78,6 +79,18 @@ export default function SongBar({ songs }) {
     }
   }
 
+  const onVolumeUp = () => {
+    if (audioRef.current.volume < 1) {
+      audioRef.current.volume += 0.1
+    }
+  }
+
+  const onVolumeDown = () => {
+    if (audioRef.current.volume >= 0.1) {
+      audioRef.current.volume -= 0.1
+    }
+  }
+
   return (
     // Componente general
     <div className={classes.songBar}>
@@ -86,12 +99,20 @@ export default function SongBar({ songs }) {
         <p>Currently Playing: {title}</p>
         <p className={classes.bottom}>By: {author || "unknown"}</p>
       </div>
+
+      <div className={classes.center}>
+        <AudioControlsCenter
+          isPlaying={isPlaying}
+          onPrevClick={toPrevSong}
+          onNextClick={toNextSong}
+          onPlayPauseClick={setIsPlaying}
+        />
+      </div>
+
       <div className={classes.right}>
-        <AudioControls
-            isPlaying={isPlaying}
-            onPrevClick={toPrevSong}
-            onNextClick={toNextSong}
-            onPlayPauseClick={setIsPlaying}
+        <AudioControlsRight
+          onVolumeUpClick={onVolumeUp}
+          onVolumeDownClick={onVolumeDown}
         />
       </div>
     </div>

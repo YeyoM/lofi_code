@@ -1,0 +1,29 @@
+.infoBar {
+  height: 3%;
+  width: 100%;
+  color: #fff;
+  display: flex;
+  flex-direction: row;
+}
+
+.general, .date, .time, .weather {
+  width: 14%;
+  padding-left: 1rem;
+}
+
+.general {
+  background-color: rgb(107, 18, 107);
+}
+
+.time {
+  background-color: rgb(126, 42, 126);
+}
+
+.date {
+  background-color: rgb(25, 44, 149);
+}
+
+.weather {
+  background-color: rgb(80, 90, 144);
+  width: inherit;
+}

@@ -1,30 +1,40 @@
-.audioControls {
+.audioControlsRight, .audioControlsCenter {
   display: flex;
   width:  100%;
 }
 
-.audioControls .prev svg,
-.audioControls .next svg {
-  width: 35px;
-  height: 35px;
+.audioControlsCenter {
+  justify-content: center;
 }
 
-.audioControls .play svg,
-.audioControls .pause svg {
-  height: 40px;
+.audioControlsRight {
+  justify-content: end;
+}
+
+.audioControlsCenter .prev svg,
+.audioControlsCenter .next svg {
   width: 40px;
+  height: 40px;
 }
 
-.audioControls path {
+.audioControlsCenter .play svg,
+.audioControlsCenter .pause svg {
+  height: 45px;
+  width: 45px;
+}
+
+.audioControlsRight .volumeUp svg,
+.audioControlsRight .volumeDown svg {
+  width: 32px;
+  height: 32px;
+}
+
+.audioControlsRight path, .audioControlsCenter path {
   fill: white;
 }
 
-.prev, .next, .play, .pause {
+.prev, .next, .play, .pause, .volumeUp, .volumeDown {
   cursor: pointer;
   border: none;
 }
 
-.prev::hover {
-  cursor: pointer;
-
-}

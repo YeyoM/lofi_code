@@ -1,5 +1,6 @@
 import SongBar from "../songBar/songBar"
 import Terminal from "../terminal/terminal"
+import InfoBar from "../infoBar/infoBar"
 
 import getSongs from '../songBar/utils/getSongs'
 const allSongs = getSongs()
@@ -13,6 +14,7 @@ export default function Main() {
     <div className={classes.main} >
       <Terminal />
       <SongBar songs={allSongs}/>
+      <InfoBar />
     </div>
   )
 }

@@ -9,10 +9,21 @@
 
 .left {
   margin-left: 5rem;
+  width: calc(100%/3);
 }
 
 .right {
   margin-right: 5rem;
+  justify-content: end;
+}
+
+.center {
+  justify-content: center;
+}
+
+.center, .right, .left {
+  flex-grow: 1;
+  flex-basis: 0;
 }
 
 .bottom {
