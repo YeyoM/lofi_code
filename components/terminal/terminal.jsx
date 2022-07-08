@@ -20,7 +20,7 @@ const commands = {
   help: (
     <span>
       hello                   - say hello <br/>
-      svolume &lt;VOLUME&gt;  - set volume to &lt;volume&gt <br/>
+      svolume &lt;VOLUME&gt;  - set volume to &lt;volume&gt; <br/>
       nextsong                - play next song <br/>
       prevsong                - play previous song <br/>    
       play                    - play song <br/>
