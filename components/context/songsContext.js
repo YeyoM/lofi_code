@@ -13,7 +13,7 @@ export const SongsContextProvider = ({ children }) => {
 
   const { title, author, id, path } = songs[songIndex]
 
-  const [audio] = useState(typeof Audio !== "undefined" && new Audio(URL))
+  const [audio] = useState(typeof Audio !== "undefined" && new Audio(path))
   const audioRef = useRef(audio)
   const isReady = useRef(false)
 
