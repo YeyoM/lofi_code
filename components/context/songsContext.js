@@ -71,6 +71,7 @@ export const SongsContextProvider = ({ children }) => {
       // Set the isReady ref as true for the next pass
       isReady.current = true;
     }
+  // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [songIndex, path]);
 
   const startTimer = () => {
