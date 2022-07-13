@@ -7,15 +7,37 @@ export const SongsContext = createContext()
 
 export const SongsContextProvider = ({ children }) => {
 
-  const [songs, setSongs] = useState(allSongs)
+  const [songs, setSongs] = useState([])
   const [songIndex, setSongIndex] = useState(0)
   const [isPlaying, setIsPlaying] = useState(false)
 
-  const { title, author, id, path } = songs[songIndex]
+  const [title, setTitle] = useState('')
+  const [author, setAuthor] = useState('')
+  const [id, setId] = useState('')
+  const [path, setPath] = useState('')
+  const [audio, setAudio] = useState(typeof Audio !== "undefined" && new Audio(path))
 
-  const [audio] = useState(typeof Audio !== "undefined" && new Audio(path))
   const audioRef = useRef(audio)
   const isReady = useRef(false)
+
+  useEffect(() => {
+    const fetchData = async () => {
+      const data = await fetch('https://lofi-api.herokuapp.com/v1/track/popular?limit=25')
+      const json = await data.json()
+      setSongs(json.items)
+    }
+    fetchData().catch(error => console.log(error))
+  }, [])
+
+  useEffect(() => {
+    if (songs.length !== 0) {
+      setTitle(songs[songIndex].title)
+      setAuthor(songs[songIndex].author)
+      setId(songs[songIndex].id)
+      setPath(songs[songIndex].path)
+      setAudio(new Audio(songs[songIndex].path))
+    }
+  }, [songIndex, songs])
 
   useEffect(() => {
     if (isPlaying) {
