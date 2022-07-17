@@ -9,6 +9,7 @@ export const SongsContextProvider = ({ children }) => {
 
   const [songs, setSongs] = useState([])
   const [songProgress, setSongProgress] = useState(0)
+  const [volume, setVolume] = useState(0.5)
   const [songIndex, setSongIndex] = useState(0)
   const [isPlaying, setIsPlaying] = useState(false)
 
@@ -44,6 +45,7 @@ export const SongsContextProvider = ({ children }) => {
   useEffect(() => {
     if (isPlaying) {
       audioRef.current.play();
+      audioRef.current.volume = 0.5;
     } else {
       audioRef.current.pause();
     }
@@ -67,6 +69,7 @@ export const SongsContextProvider = ({ children }) => {
       audioRef.current.play();
       setIsPlaying(true);
       startTimer();
+      audioRef.current.volume = volume;
     } else {
       // Set the isReady ref as true for the next pass
       isReady.current = true;
@@ -106,18 +109,21 @@ export const SongsContextProvider = ({ children }) => {
   const onVolumeUp = () => {
     if (audioRef.current.volume < 1) {
       audioRef.current.volume += 0.1
+      setVolume(audioRef.current.volume)
     }
   }
 
   const onVolumeDown = () => {
-    if (audioRef.current.volume >= 0.1) {
+    if (volume >= 0.1) {
       audioRef.current.volume -= 0.1
+      setVolume(audioRef.current.volume)
     }
   }
 
-  const setVolume = (volume) => {
+  const setVolumeCommand = (volume) => {
     if (volume >= 0 && volume <= 1) {
       audioRef.current.volume = volume
+      setVolume(volume)
     }
   }
 
@@ -133,11 +139,13 @@ export const SongsContextProvider = ({ children }) => {
       toNextSong,
       onVolumeUp,
       onVolumeDown,
-      setVolume,
+      setVolumeCommand,
       title,
       author,
       id,
-      path
+      path,
+      songProgress,
+      volume
     }}>
       {children}
     </SongsContext.Provider>

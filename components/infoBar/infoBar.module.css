@@ -6,7 +6,7 @@
   flex-direction: row;
 }
 
-.general, .date, .time, .weather {
+.general, .date, .time, .weather, .progress, .volume {
   width: 14%;
   padding-left: 1rem;
 }
@@ -16,14 +16,22 @@
 }
 
 .time {
-  background-color: rgb(126, 42, 126);
+  background-color: rgb(25, 44, 149);
 }
 
 .date {
-  background-color: rgb(25, 44, 149);
+  background-color: rgb(59, 74, 157);
 }
 
 .weather {
   background-color: rgb(80, 90, 144);
   width: inherit;
+}
+
+.progress {
+  background-color: rgb(126, 42, 126);
+}
+
+.volume {
+  background-color: rgb(166, 15, 166);
 }

@@ -1,6 +1,9 @@
 import { useState, useEffect } from 'react'
 import classes from './infoBar.module.css'
 
+import { useContext } from 'react'
+import { SongsContext } from '../context/songsContext.js'
+
 import useGeolocation from '../../hooks/useGeolocation/useGeolocation'
 
 function getDate() {
@@ -28,9 +31,13 @@ async function getWeather(latitude, longitude) {
 
 export default function InfoBar() {
 
+  const { songProgress, volume } = useContext( SongsContext )
+
   const [date, setDate] = useState()
   const [time, setTime] = useState()
   const [weather, setWeather] = useState()
+  const [hour, setHour] = useState()
+  const [volumePercentage, setVolumePercentage] = useState()
 
   const location = useGeolocation()
 
@@ -42,17 +49,45 @@ export default function InfoBar() {
       console.log(error)
     })
     setInterval(() => {
-      setTime(new Date().toLocaleTimeString())
+      setHour(new Date().toLocaleTimeString())
     }, 1000)
   }, [location])
+
+
+  useEffect(() => {
+    const minutes = Math.floor(songProgress / 60)
+    const seconds = Math.floor(songProgress % 60)
+
+    if (seconds < 10 && minutes < 10) {
+      setTime(`0${minutes}:0${seconds}`)
+    } else if (seconds < 10 && minutes >= 10) {
+      setTime(`${minutes}:0${seconds}`)
+    } else if (seconds >= 10 && minutes < 10) {
+      setTime(`0${minutes}:${seconds}`)
+    } else {
+      setTime(`${minutes}:${seconds}`)
+    }
+
+  }, [songProgress])
+
+  useEffect(() => {
+    setVolumePercentage(Math.round(volume * 100))
+  }, [volume])
+
 
   return (
     <div className={classes.infoBar}>
       <div className={classes.general}>
         Lofi Terminal
       </div>  
+      <div className={classes.progress}>
+        {time} sec
+      </div>
+      <div className={classes.volume}>
+        vol {volumePercentage}%
+      </div>
       <div className={classes.time}>
-        {time}
+        {hour}
       </div>
       <div className={classes.date}>
         {date}
