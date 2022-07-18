@@ -15,10 +15,8 @@ export default function Terminal() {
     setIsPlaying,
     toPrevSong,
     toNextSong,
-    setVolumeCommand,
-    title,
-    author
-  } = useContext( SongsContext )
+    setVolumeCommand
+  } = useContext(SongsContext)
 
   const commands = {
     svolume: (volume) => setVolumeCommand(volume),
