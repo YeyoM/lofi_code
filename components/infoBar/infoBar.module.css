@@ -1,13 +1,16 @@
 .infoBar {
-  height: 3%;
+  height: 1.3rem;
   width: 100%;
   color: #fff;
   display: flex;
   flex-direction: row;
+  overflow: hidden;
+  position: fixed;
+  bottom: 0;
 }
 
 .general, .date, .time, .weather, .progress, .volume {
-  width: 14%;
+  width: 20%;
   padding-left: 1rem;
 }
 

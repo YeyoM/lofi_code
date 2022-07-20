@@ -1,6 +1,4 @@
 .terminal {
-  min-height: 87%;
-  max-height: 87%;
-  border-bottom: 1px solid white;
+  height: auto;
   padding: 2rem;
 }
