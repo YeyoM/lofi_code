@@ -13,7 +13,7 @@ export default async function handler (req, res) {
     const weatherResponse = await fetch(`https://api.openweathermap.org/data/2.5/weather?lat=${latitude}&lon=${longitude}&appid=${process.env.WEATHER_API_KEY}`)
     const weatherData = await weatherResponse.json()
 
-    return res.status(200).send( weatherData )
+    return res.status(200).send(weatherData)
   }
 
 }

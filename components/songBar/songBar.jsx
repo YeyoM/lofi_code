@@ -20,7 +20,6 @@ export default function SongBar() {
   } = useContext( SongsContext )
 
   return (
-    // Componente general
     <div className={classes.songBar}>
 
       <div className={classes.left}>
