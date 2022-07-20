@@ -31,9 +31,11 @@ export const SongsContextProvider = ({ children }) => {
   // Set the songs array state
   useEffect(() => {
     const fetchData = async () => {
-      const data = await fetch('https://lofi-api.herokuapp.com/v1/track?limit=25')
+      const data = await fetch('https://lofi-terminal-default-rtdb.firebaseio.com/songs.json')
       const json = await data.json()
-      setSongs(json.items)
+      let songsArray = Object.values(json)
+      songsArray = songsArray.sort(function() { return Math.random() - 0.5  })
+      setSongs(songsArray)
     }
     fetchData().catch(error => console.log(error))
   }, [])
