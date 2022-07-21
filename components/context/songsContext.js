@@ -55,7 +55,6 @@ export const SongsContextProvider = ({ children }) => {
   useEffect(() => {
     if (isPlaying) {
       audioRef.current.play();
-      audioRef.current.volume = 0.5;
     } else {
       audioRef.current.pause();
     }
