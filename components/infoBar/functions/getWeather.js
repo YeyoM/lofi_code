@@ -1,5 +1,8 @@
 export default async function getWeather(latitude, longitude) {
-  const response = await fetch('http://localhost:3000/api/getWeather', {
+
+  const currentHost = process.env.NEXT_PUBLIC_HOST || 'localhost:3000 for dev'
+
+  const response = await fetch(currentHost, {
     method: 'POST',
     headers: {
       'Content-Type': 'application/json'
