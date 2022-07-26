@@ -54,66 +54,66 @@ export const SongsContextProvider = ({ children }) => {
   // Play the current song in case isPlaying is true
   useEffect(() => {
     if (isPlaying) {
-      audioRef.current.play();
+      audioRef.current.play()
     } else {
-      audioRef.current.pause();
+      audioRef.current.pause()
     }
-  }, [isPlaying]);
+  }, [isPlaying])
 
   /* A cleanup function that is called when the component is unmounted. */
   useEffect(() => {
     return () => {
-      audioRef.current.pause();
-      clearInterval(intervalRef.current);
+      audioRef.current.pause()
+      clearInterval(intervalRef.current)
     }
-  }, []);
+  }, [])
 
 
   /* Creating a new Audio element and setting the current time to the songProgress state. */
   useEffect(() => {
-    audioRef.current.pause();
-    audioRef.current = new Audio(path);
+    audioRef.current.pause()
+    audioRef.current = new Audio(path)
 
-    setSongProgress(audioRef.current.currentTime);
+    setSongProgress(audioRef.current.currentTime)
 
     if (isReady.current) {
-      audioRef.current.play();
-      setIsPlaying(true);
-      startTimer();
-      audioRef.current.volume = volume;
+      audioRef.current.play()
+      setIsPlaying(true)
+      startTimer()
+      audioRef.current.volume = volume
     } else {
-      isReady.current = true;
+      isReady.current = true
     }
   // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, [songIndex, path]);
+  }, [songIndex, path])
 
   /* Setting the current time of the song to the songProgress state. */
   const startTimer = () => {
-    clearInterval(intervalRef.current);
+    clearInterval(intervalRef.current)
 
 	  intervalRef.current = setInterval(() => {
 	    if (audioRef.current.ended) {
-	      toNextSong();
+	      toNextSong()
 	    } else {
-	      setSongProgress(audioRef.current.currentTime);
+	      setSongProgress(audioRef.current.currentTime)
 	    }
-	  }, [1000]);
+	  }, [1000])
 	}
 
   /* Functions to control the current song list and current song properties */
   const toPrevSong = () => {
     if (songIndex - 1 < 0) {
-      setSongIndex(songs.length - 1);
+      setSongIndex(songs.length - 1)
     } else {
-      setSongIndex(songIndex - 1);
+      setSongIndex(songIndex - 1)
     }
   }
 
   const toNextSong = () => {
     if (songIndex < songs.length - 1) {
-      setSongIndex(songIndex + 1);
+      setSongIndex(songIndex + 1)
     } else {
-      setSongIndex(0);
+      setSongIndex(0)
     }
   }
 
@@ -158,7 +158,7 @@ export const SongsContextProvider = ({ children }) => {
       songProgress,
       volume
     }}>
-      {children}
+      { children }
     </SongsContext.Provider>
   )
 }
