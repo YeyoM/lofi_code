@@ -46,6 +46,7 @@ export default function InfoBar() {
     }, 1000)
   }, [location, latitude, longitude])
 
+  console.log(location, weather)
 
   /* Setting the time. */
   useEffect(() => {
