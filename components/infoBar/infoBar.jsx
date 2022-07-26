@@ -18,6 +18,8 @@ export default function InfoBar() {
 
   const [date, setDate] = useState()
   const [time, setTime] = useState()
+  const [latitude, setLatitude] = useState()
+  const [longitude, setLongitude] = useState()
   const [weather, setWeather] = useState()
   const [hour, setHour] = useState()
   const [volumePercentage, setVolumePercentage] = useState()
@@ -28,15 +30,21 @@ export default function InfoBar() {
   /* Setting the date, weather, and time. */
   useEffect(() => {
     setDate(getDate())
-    getWeather(location.coordinates.latitude, location.coordinates.longitude).then(data => {
-      setWeather(data.weather[0].main)
-    }).catch(error => {
-      console.log(error)
-    })
+    if (location.coordinates) {
+      setLatitude(location.coordinates.latitude)
+      setLongitude(location.coordinates.longitude)
+      getWeather(latitude, longitude).then(data => {
+        setWeather(data.weather[0].main)
+      }).catch(error => {
+        console.log(error)
+      })
+    } else {
+      setWeather('Climate here... Allow location services to work and refresh.')
+    }
     setInterval(() => {
       setHour(new Date().toLocaleTimeString())
     }, 1000)
-  }, [location])
+  }, [location, latitude, longitude])
 
 
   /* Setting the time. */
