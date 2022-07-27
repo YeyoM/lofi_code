@@ -17,7 +17,7 @@ export default function SongBar() {
     onVolumeDown,
     title,
     author
-  } = useContext( SongsContext )
+  } = useContext(SongsContext)
 
   return (
     <div className={classes.songBar}>
