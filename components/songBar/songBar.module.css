@@ -33,3 +33,30 @@
 .bottom {
   margin-bottom: 0;
 }
+
+@media only screen and (max-width: 920px) {
+  .songBar {
+    height: 7.5rem;
+  }
+  .left {
+    margin-left: 1rem;
+  }
+  .right {
+    margin-right: 1rem;
+  }
+}
+
+@media only screen and (max-width: 600px) {
+  .songBar {
+    height: 8.5rem;
+  }
+  .left {
+    margin-left: 0.4rem;
+  }
+  .right {
+    margin-right: 0.4rem;
+  }
+  .currentlyPlaying {
+    display: none;
+  }
+}

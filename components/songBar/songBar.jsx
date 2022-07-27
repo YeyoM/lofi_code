@@ -23,8 +23,8 @@ export default function SongBar() {
     <div className={classes.songBar}>
 
       <div className={classes.left}>
-        <p>Currently Playing: {title}</p>
-        <p className={classes.bottom}>By: {author || "unknown"}</p>
+        <p><span className={classes.currentlyPlaying}>Currently Playing: </span>{title}</p>
+        <p className={classes.bottom}><span className={classes.currentlyPlaying}>By: </span>{author || "unknown"}</p>
       </div>
 
       <div className={classes.center}>

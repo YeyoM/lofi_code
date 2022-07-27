@@ -38,3 +38,18 @@
 .volume {
   background-color: rgb(166, 15, 166);
 }
+
+@media only screen and (max-width: 1400px) {
+  .general, .date, .time, .weather, .progress, .volume {
+    width: 25%;
+  }
+}
+
+@media only screen and (max-width: 920px) {
+  .date, .time, .weather{
+    display: none
+  }
+  .general, .progress, .volume {
+    width: 50%;
+  }
+}
