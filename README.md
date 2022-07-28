@@ -24,9 +24,15 @@
 
 [![Product Name Screen Shot][product-screenshot]](https://lofi-terminal.vercel.app/)
 
-Here's a blank template to get started: To avoid retyping too much info. Do a search and replace with your text editor for the following: `github_username`, `repo_name`, `twitter_handle`, `linkedin_username`, `email_client`, `email`, `project_title`, `project_description`
+### What is Lofi?
+Lofi refers to a recording with less than professional or flawed sound quality. “Lo-fi” is short for “low fidelity,” and initially referred to a low-quality recording with audible imperfections, such as background noise or performance mistakes, recorded with inexpensive equipment—the opposite of high fidelity or hi-fi production.
 
+- Lofi music can reduce stress and enhance focus, resulting in quality study sessions.
+- Lofi and other musical styles can help students reduce distractions while boosting brain activity.
 
+Slower, relaxing music can improve your mood by increasing serotonin and dopamine levels. A study from Montreal's McGill University found that music listeners receive up to a 9% boost in dopamine levels. This boost in brain chemicals can enhance studying by keeping developers and students focused and relaxed.
+
+In addition to elevating mood and increasing brain activity, lo-fi music offers a solid list of benefits that can help you make the most of your studying. Keep reading to learn more about the benefits of lofi music.
 ### Built With
 
 * [![Next][Next.js]][Next-url]
