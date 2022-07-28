@@ -69,11 +69,11 @@ Have npm on your system.
 4. Set another env variable for the host url
    ```env
     NEXT_PUBLIC_HOST=http://localhost:3000/api/getWeather
-  ```
+   ```
 5. Run the development server
    ```sh
     npm run dev
-  ```
+   ```
 
 <!-- LICENSE -->
 ## License
@@ -83,9 +83,9 @@ Distributed under the MIT License. See `LICENSE.txt` for more information.
 <!-- CONTACT -->
 ## Contact
 
-Your Name - [@YeyoMoreno24](https://twitter.com/YeyoMoreno24) - yeyomoreno2003@hotmail.com
+YeyoM - [@YeyoMoreno24](https://twitter.com/YeyoMoreno24) - yeyomoreno2003@hotmail.com
 
-Project Link: [https://github.com/YeyoM/lofi_code](https://github.com/YeyoM/lofi_code)
+Lofi Terminal - [https://github.com/YeyoM/lofi_code](https://github.com/YeyoM/lofi_code)
 
 <!-- MARKDOWN LINKS & IMAGES -->
 <!-- https://www.markdownguide.org/basic-syntax/#reference-style-links -->
