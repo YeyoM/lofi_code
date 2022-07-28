@@ -35,8 +35,57 @@ Slower, relaxing music can improve your mood by increasing serotonin and dopamin
 In addition to elevating mood and increasing brain activity, lo-fi music offers a solid list of benefits that can help you make the most of your studying. Keep reading to learn more about the benefits of lofi music.
 ### Built With
 
-* [![Next][Next.js]][Next-url]
-* [![React][React.js]][React-url]
+- [![Next][Next.js]][Next-url]
+- [![React][React.js]][React-url]
+
+<!-- GETTING STARTED -->
+## Getting Started
+
+To get a local copy up and running follow these simple example steps.
+
+### Prerequisites
+
+Have npm on your system.
+
+- npm
+  ```sh
+  npm install npm@latest -g
+  ```
+
+### Installation
+
+1. Clone the repo
+   ```sh
+    git clone https://github.com/YeyoM/lofi_code.git
+   ```
+2. Install NPM packages
+   ```sh
+    npm install
+   ```
+3. Get and api key from Openweather and enter your API in an env file
+   ```env
+    WEATHER_API_KEY=<your api key>
+   ```
+4. Set another env variable for the host url
+   ```env
+    NEXT_PUBLIC_HOST=http://localhost:3000/api/getWeather
+  ```
+5. Run the development server
+   ```sh
+    npm run dev
+  ```
+
+<!-- LICENSE -->
+## License
+
+Distributed under the MIT License. See `LICENSE.txt` for more information.
+
+<!-- CONTACT -->
+## Contact
+
+Your Name - [@YeyoMoreno24](https://twitter.com/YeyoMoreno24) - yeyomoreno2003@hotmail.com
+
+Project Link: [https://github.com/YeyoM/lofi_code](https://github.com/YeyoM/lofi_code)
 
 <!-- MARKDOWN LINKS & IMAGES -->
 <!-- https://www.markdownguide.org/basic-syntax/#reference-style-links -->
