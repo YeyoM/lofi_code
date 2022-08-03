@@ -1,13 +1,11 @@
-import React, { Fragment } from 'react'
-import Head from 'next/head'
+import Document, { Html, Head, Main, NextScript } from 'next/document'
+import React from 'react'
 
-import Main from "../components/main/main"
-
-export default function Home() {
-  return (
-    <Fragment>
+class myDocument extends Document {
+  render () {
+    return <Html lang='en'>
       <Head>
-        <title>Lofi Terminal</title>
+        <link rel="icon" href="/icon.svg" />
         <meta 
           name="viewport"
           content="width=device-width, initial-scale=1.0"
@@ -21,7 +19,12 @@ export default function Home() {
           content="JOI4AGYf-0LIW42s2z_eHwSuUpBzQxF4hxZMoCveilw" 
         />
       </Head>
-      <Main />
-    </Fragment>
-  )
+      <body>
+        <Main />
+        <NextScript />
+      </body>
+    </Html>
+  }
 }
+
+export default myDocument
