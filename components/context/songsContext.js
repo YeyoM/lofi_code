@@ -156,7 +156,7 @@ export const SongsContextProvider = ({ children }) => {
       id,
       path,
       songProgress,
-      volume
+      volume,
     }}>
       { children }
     </SongsContext.Provider>

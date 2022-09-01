@@ -15,7 +15,8 @@ export default function Terminal() {
     setIsPlaying,
     toPrevSong,
     toNextSong,
-    setVolumeCommand
+    setVolumeCommand,
+    songs
   } = useContext(SongsContext)
 
   const commands = {
@@ -40,7 +41,18 @@ export default function Terminal() {
         playpause               - play or pauses the song <br/>
         about                   - get more info <br/>
         help                    - show this message <br/>    
-        clear                   - clear screen      
+        clear                   - clear screen  <br />
+        displaySongs            - display all songs   
+      </span>
+    ),
+    displaySongs: (
+      <span>
+        Current available songs: <br />
+        {songs.map((song, index) => (
+          <div key={index}>
+            {song.title} - {song.author}
+          </div>
+        ))}
       </span>
     )
   }
