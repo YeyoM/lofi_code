@@ -26,7 +26,8 @@ export default function Terminal() {
     toPrevSong,
     toNextSong,
     setVolumeCommand,
-    songs
+    songs,
+    changeInfoBarColors
   } = useContext(SongsContext)
 
   const commands = {
@@ -74,6 +75,7 @@ export default function Terminal() {
       setTheme(theme);
       if (theme === "dark") {
         document.body.style.backgroundColor = "#002833"
+        // cambiar los colores de cada infobar para que luego se apliquen a la app
       } else if (theme === "materialDark") {
         document.body.style.backgroundColor = "#151515"
       } else if (theme === "materialOcean") {

@@ -13,7 +13,8 @@ export default function InfoBar() {
 
   const { 
     songProgress, 
-    volume 
+    volume,
+    infoBarColors
   } = useContext( SongsContext )
 
   const [date, setDate] = useState()
@@ -66,6 +67,9 @@ export default function InfoBar() {
     setVolumePercentage(Math.round(volume * 100))
   }, [volume])
 
+  useEffect(() => {
+    // change the inline styles for the infobar bgcolors
+  }, [infoBarColors])
 
   return (
     <div className={classes.infoBar}>

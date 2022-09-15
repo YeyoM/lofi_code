@@ -28,6 +28,16 @@ export const SongsContextProvider = ({ children }) => {
   const intervalRef = useRef()
   const isReady = useRef(false)
 
+  // change infobar colors
+  const [infoBarColors, setInfoBarColors] = useState({
+    general: "#6b126b",
+    time: "#192c95",
+    date: "#3b4a9d",
+    weather: "#505a90",
+    progress: "#7e2a7e",
+    volume: "#a60fa6"
+  })
+
   // Set the songs array state
   useEffect(() => {
     const fetchData = async () => {
@@ -138,6 +148,17 @@ export const SongsContextProvider = ({ children }) => {
     }
   }
 
+  const changeInfoBarColors = (generalColor, dateColor, timeColor, weatherColor, progressColor, volumeColor) => {
+    setInfoBarColors({
+      general: generalColor,
+      time: timeColor,
+      date: dateColor,
+      weather: weatherColor,
+      progress: progressColor,
+      volume: volumeColor
+    })
+  }
+
   return (
     <SongsContext.Provider value={{
       songs,
@@ -157,6 +178,8 @@ export const SongsContextProvider = ({ children }) => {
       path,
       songProgress,
       volume,
+      infoBarColors,
+      changeInfoBarColors
     }}>
       { children }
     </SongsContext.Provider>
