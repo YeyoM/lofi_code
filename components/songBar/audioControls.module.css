@@ -36,6 +36,7 @@
 .prev, .next, .play, .pause, .volumeUp, .volumeDown {
   cursor: pointer;
   border: none;
+  background-color: inherit;
 }
 
 

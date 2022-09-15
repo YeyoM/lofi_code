@@ -1,7 +1,7 @@
 import { ReactTerminal } from 'react-terminal'
 import { TerminalContextProvider } from 'react-terminal'
 
-import { useContext } from 'react'
+import { useContext, useState, useEffect } from 'react'
 import { SongsContext } from '../context/songsContext.js'
 
 import classes from './terminal.module.css'
@@ -9,6 +9,16 @@ import classes from './terminal.module.css'
 const welcomeMessage = (<span>Welcome to the <a href="https://github.com/YeyoM/lofi_code">lofi terminal</a>, type &quot;help&quot; for all the available commands<br /></span>)
 
 export default function Terminal() {
+
+  const [theme, setTheme] = useState('dracula')
+
+  useEffect(() => {
+    const theme = localStorage.getItem('theme')
+    document.body.style.backgroundColor = "#282a36"
+    if (theme) {
+      setTheme(theme)
+    }
+  }, [])
 
   const { 
     isPlaying,
@@ -42,7 +52,8 @@ export default function Terminal() {
         about                   - get more info <br/>
         help                    - show this message <br/>    
         clear                   - clear screen  <br />
-        displaySongs            - display all songs   
+        displaySongs            - display all songs   <br />
+        changeTheme             - change theme (dark, light, material-light, material-dark, material-ocean, matrix, dracula)   <br />
       </span>
     ),
     displaySongs: (
@@ -54,14 +65,32 @@ export default function Terminal() {
           </div>
         ))}
       </span>
-    )
+    ),
+    changeTheme: (theme) => {
+      const validThemes = ["dark", "material-dark", "material-ocean", "matrix", "dracula"]
+      if (!validThemes.includes(theme)) {
+        return `Theme ${theme} not valid. Try one of ${validThemes.join(", ")}`
+      }
+      setTheme(theme);
+      if (theme === "dark") {
+        document.body.style.backgroundColor = "#002833"
+      } else if (theme === "material-dark") {
+        document.body.style.backgroundColor = "#151515"
+      } else if (theme === "material-ocean") {
+        document.body.style.backgroundColor = "#263238"
+      } else if (theme === "matrix") {
+        document.body.style.backgroundColor = "#110008"
+      } else if (theme === "dracula") {
+        document.body.style.backgroundColor = "#282a36"
+      }
+    }
   }
 
   return (
     <TerminalContextProvider>
       <div className={classes.terminal}>
       <ReactTerminal
-        theme="dracula"
+        theme={theme}
         welcomeMessage={welcomeMessage}
         prompt="lofi-terminal:~$"
         commands={commands}

@@ -7,6 +7,7 @@ const nextConfig = withPWA({
     dest: 'public',
     register: true,
     skipWaiting: true,
+    mode: 'production'
   },
   webpack(config) {
     config.module.rules.push({
