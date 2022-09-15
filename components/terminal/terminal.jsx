@@ -53,7 +53,7 @@ export default function Terminal() {
         help                    - show this message <br/>    
         clear                   - clear screen  <br />
         displaySongs            - display all songs   <br />
-        changeTheme             - change theme (dark, light, material-light, material-dark, material-ocean, matrix, dracula)   <br />
+        changeTheme             - change theme (dark, materialDark, materialOcean, matrix, dracula)
       </span>
     ),
     displaySongs: (
@@ -67,21 +67,23 @@ export default function Terminal() {
       </span>
     ),
     changeTheme: (theme) => {
-      const validThemes = ["dark", "material-dark", "material-ocean", "matrix", "dracula"]
+      const validThemes = ["dark", "materialDark", "materialOcean", "matrix", "dracula", "gruvbox"]
       if (!validThemes.includes(theme)) {
         return `Theme ${theme} not valid. Try one of ${validThemes.join(", ")}`
       }
       setTheme(theme);
       if (theme === "dark") {
         document.body.style.backgroundColor = "#002833"
-      } else if (theme === "material-dark") {
+      } else if (theme === "materialDark") {
         document.body.style.backgroundColor = "#151515"
-      } else if (theme === "material-ocean") {
+      } else if (theme === "materialOcean") {
         document.body.style.backgroundColor = "#263238"
       } else if (theme === "matrix") {
         document.body.style.backgroundColor = "#110008"
       } else if (theme === "dracula") {
         document.body.style.backgroundColor = "#282a36"
+      } else if (theme === "gruvbox") {
+        document.body.style.backgroundColor = "#292828"
       }
     }
   }
@@ -91,6 +93,38 @@ export default function Terminal() {
       <div className={classes.terminal}>
       <ReactTerminal
         theme={theme}
+        themes={{
+          gruvbox: {
+            themeBGColor: "#66000000",
+            themePromptColor: "#d1801d",
+            themeColor: "#FFFEFC",
+          },
+          dark: {
+            themeBGColor: "#66000000",
+            themePromptColor: "#b9d82c",
+            themeColor: "#ffffff",
+          }, 
+          materialDark: {
+            themeBGColor: "#66000000",
+            themePromptColor: "#3895e7",
+            themeColor: "#ffffff",
+          },
+          materialOcean: {
+            themeBGColor: "#66000000",
+            themePromptColor: "#b9d82c",
+            themeColor: "#ffffff",
+          },
+          matrix: {
+            themeBGColor: "#66000000",
+            themePromptColor: "#00FF00",
+            themeColor: "#00FF00",
+          },
+          dracula: {
+            themeBGColor: "#66000000",
+            themePromptColor: "#a60fa6", // morado
+            themeColor: "#ffffff", // blanco
+          }
+        }}
         welcomeMessage={welcomeMessage}
         prompt="lofi-terminal:~$"
         commands={commands}
