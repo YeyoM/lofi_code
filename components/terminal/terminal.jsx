@@ -10,15 +10,7 @@ const welcomeMessage = (<span>Welcome to the <a href="https://github.com/YeyoM/l
 
 export default function Terminal() {
 
-  const [theme, setTheme] = useState('dracula')
-
-  useEffect(() => {
-    const theme = localStorage.getItem('theme')
-    document.body.style.backgroundColor = "#282a36"
-    if (theme) {
-      setTheme(theme)
-    }
-  }, [])
+  const [theme, setTheme] = useState('matrix')
 
   const { 
     isPlaying,
@@ -29,6 +21,17 @@ export default function Terminal() {
     songs,
     setAppTheme
   } = useContext(SongsContext)
+
+  useEffect(() => {
+    const theme = localStorage.getItem('theme')
+    setAppTheme('matrix')
+    setTheme('matrix')
+    document.body.style.backgroundColor = "#110008"
+
+    if (theme) {
+      setTheme(theme)
+    }
+  }, [])
 
   const commands = {
     svolume: (volume) => setVolumeCommand(volume),
