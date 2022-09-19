@@ -38,6 +38,8 @@ export const SongsContextProvider = ({ children }) => {
     volume: "#a60fa6"
   })
 
+  const [appTheme, setAppTheme] = useState("dracula")
+
   // Set the songs array state
   useEffect(() => {
     const fetchData = async () => {
@@ -178,8 +180,8 @@ export const SongsContextProvider = ({ children }) => {
       path,
       songProgress,
       volume,
-      infoBarColors,
-      changeInfoBarColors
+      appTheme, 
+      setAppTheme
     }}>
       { children }
     </SongsContext.Provider>

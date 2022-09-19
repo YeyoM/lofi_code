@@ -27,7 +27,7 @@ export default function Terminal() {
     toNextSong,
     setVolumeCommand,
     songs,
-    changeInfoBarColors
+    setAppTheme
   } = useContext(SongsContext)
 
   const commands = {
@@ -75,17 +75,23 @@ export default function Terminal() {
       setTheme(theme);
       if (theme === "dark") {
         document.body.style.backgroundColor = "#002833"
+        setAppTheme("dark")
         // cambiar los colores de cada infobar para que luego se apliquen a la app
       } else if (theme === "materialDark") {
         document.body.style.backgroundColor = "#151515"
+        setAppTheme("materialDark")
       } else if (theme === "materialOcean") {
         document.body.style.backgroundColor = "#263238"
+        setAppTheme("materialOcean")
       } else if (theme === "matrix") {
         document.body.style.backgroundColor = "#110008"
+        setAppTheme("matrix")
       } else if (theme === "dracula") {
         document.body.style.backgroundColor = "#282a36"
+        setAppTheme("dracula")
       } else if (theme === "gruvbox") {
         document.body.style.backgroundColor = "#292828"
+        setAppTheme("gruvbox")
       }
     }
   }
