@@ -31,7 +31,7 @@ export default function Terminal() {
     if (theme) {
       setTheme(theme)
     }
-  }, [])
+  }, [setAppTheme])
 
   const commands = {
     svolume: (volume) => setVolumeCommand(volume),

@@ -1,9 +1,36 @@
-import React, { Fragment } from 'react'
+import React, { Fragment, useState, useEffect, useContext } from 'react'
+import { SongsContext } from "../components/context/songsContext.js"
 import Head from 'next/head'
 
 import Main from "../components/main/main"
 
 export default function Home() {
+
+  const {
+    appTheme
+  } = useContext(SongsContext)
+
+  const [themeColor, setThemeColor] = useState('#110018')  
+
+  useEffect(() => {
+    if (appTheme === "dracula") {
+      setThemeColor("#282a36")
+    } else if (appTheme === "dark") {
+      setThemeColor("#002833")
+    } else if (appTheme === "materialDark") {
+      setThemeColor("#151515")
+    } else if (appTheme === "materialOcean") {
+      setThemeColor("#263238")
+    } else if (appTheme === "matrix") {
+      setThemeColor("#110018")
+    } else if (appTheme === "gruvbox") {
+      setThemeColor("#292828")
+    }
+  }, [appTheme])
+
+  console.log(appTheme)
+
+
   return (
     <Fragment>
       <Head>
@@ -19,6 +46,10 @@ export default function Home() {
         <meta 
           name="google-site-verification" 
           content="JOI4AGYf-0LIW42s2z_eHwSuUpBzQxF4hxZMoCveilw" 
+        />
+        <meta 
+          name="theme-color" 
+          content={themeColor}
         />
       </Head>
       <Main />
