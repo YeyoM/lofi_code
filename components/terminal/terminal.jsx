@@ -29,6 +29,7 @@ export default function Terminal() {
       localStorage.setItem('theme', 'matrix')
       setAppTheme('matrix')
       setTheme('matrix')
+      document.body.style.backgroundColor = "#110008"
     } else {
       setAppTheme(theme)
       setTheme(theme)
