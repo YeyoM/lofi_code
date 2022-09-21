@@ -82,7 +82,7 @@ export default function Terminal() {
         Current available songs: <br />
         {songs.map((song, index) => (
           <div key={index}>
-            {song.title} - {song.author}
+            <a href={song.path}>{song.title}</a> - {song.author}
           </div>
         ))}
       </span>

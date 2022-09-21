@@ -33,7 +33,7 @@ export default function SongBar() {
 
       <Offline>
         <div className={classes.left}>
-          <p>You are offline :(</p>
+          <p>Unable to get reproduce songs</p>
         </div>
       </Offline>
 
