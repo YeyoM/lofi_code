@@ -22,7 +22,7 @@ export default function Home() {
     } else if (appTheme === "materialOcean") {
       setThemeColor("#263238")
     } else if (appTheme === "matrix") {
-      setThemeColor("#110018")
+      setThemeColor("#110008")
     } else if (appTheme === "gruvbox") {
       setThemeColor("#292828")
     }
