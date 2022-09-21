@@ -30,18 +30,6 @@ export const SongsContextProvider = ({ children }) => {
 
   const [appTheme, setAppTheme] = useState("dracula")
 
-  // Set the songs array state
-  useEffect(() => {
-    const fetchData = async () => {
-      const data = await fetch('https://lofi-terminal-default-rtdb.firebaseio.com/songs.json')
-      const json = await data.json()
-      let songsArray = Object.values(json)
-      songsArray = songsArray.sort(function() { return Math.random() - 0.5  })
-      setSongs(songsArray)
-    }
-    fetchData().catch(error => console.log(error))
-  }, [])
-
   // Set the current song's information state
   useEffect(() => {
     if (songs.length !== 0) {

@@ -4,10 +4,11 @@ import Head from 'next/head'
 
 import Main from "../components/main/main"
 
-export default function Home() {
+export default function Home({ songs }) {
 
   const {
-    appTheme
+    appTheme,
+    setSongs
   } = useContext(SongsContext)
 
   const [themeColor, setThemeColor] = useState('#110008')  
@@ -28,8 +29,9 @@ export default function Home() {
     }
   }, [appTheme])
 
-  console.log(appTheme)
-
+  useEffect(() => {
+    setSongs(songs)
+  }, [songs, setSongs])
 
   return (
     <Fragment>
@@ -55,4 +57,18 @@ export default function Home() {
       <Main />
     </Fragment>
   )
+}
+
+export async function getStaticProps() {
+
+  const data = await fetch('https://lofi-terminal-default-rtdb.firebaseio.com/songs.json')
+  const json = await data.json()
+  let songsArray = Object.values(json)
+  let songs = songsArray.sort(function() { return Math.random() - 0.5  })
+
+  return {
+    props: {
+      songs
+    }
+  }
 }
