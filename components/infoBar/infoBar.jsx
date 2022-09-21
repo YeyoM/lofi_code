@@ -9,6 +9,8 @@ import getDate from './functions/getDate.js'
 
 import useGeolocation from '../../hooks/useGeolocation/useGeolocation'
 
+import { Offline, Online } from "react-detect-offline"
+
 export default function InfoBar() {
 
   const { 
@@ -138,7 +140,12 @@ export default function InfoBar() {
         {date}
       </div>
       <div className={classes.weather} style={weatherStyle}>
-        {weather}
+        <Online>
+          {weather}
+        </Online>
+        <Offline>
+          Currently Offline, cant get weather.
+        </Offline>
       </div>
     </div>  
   )
