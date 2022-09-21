@@ -44,7 +44,6 @@ export default function InfoBar() {
       getWeather(latitude, longitude).then(data => {
         setWeather(data.weather[0].main)
       }).catch(error => {
-        console.log(error)
       })
     } else {
       setWeather('Climate here... Allow location services to work and refresh.')
