@@ -24,13 +24,29 @@ export default function Terminal() {
 
   useEffect(() => {
     const theme = localStorage.getItem('theme')
-    setAppTheme('matrix')
-    setTheme('matrix')
-    document.body.style.backgroundColor = "#110008"
-
-    if (theme) {
+    console.log(theme)
+    if (!theme) {
+      localStorage.setItem('theme', 'matrix')
+      setAppTheme('matrix')
+      setTheme('matrix')
+    } else {
+      setAppTheme(theme)
       setTheme(theme)
+      if (theme === "dark") {
+        document.body.style.backgroundColor = "#002833"
+      } else if (theme === "materialDark") {
+        document.body.style.backgroundColor = "#151515"
+      } else if (theme === "materialOcean") {
+        document.body.style.backgroundColor = "#263238"
+      } else if (theme === "matrix") {
+        document.body.style.backgroundColor = "#110008"
+      } else if (theme === "dracula") {
+        document.body.style.backgroundColor = "#282a36"
+      } else if (theme === "gruvbox") {
+        document.body.style.backgroundColor = "#292828"
+      }
     }
+
   }, [setAppTheme])
 
   const commands = {
@@ -79,22 +95,34 @@ export default function Terminal() {
       if (theme === "dark") {
         document.body.style.backgroundColor = "#002833"
         setAppTheme("dark")
+        setTheme("dark")
+        localStorage.setItem('theme', 'dark')
         // cambiar los colores de cada infobar para que luego se apliquen a la app
       } else if (theme === "materialDark") {
         document.body.style.backgroundColor = "#151515"
         setAppTheme("materialDark")
+        setTheme("materialDark")
+        localStorage.setItem('theme', 'materialDark')
       } else if (theme === "materialOcean") {
         document.body.style.backgroundColor = "#263238"
         setAppTheme("materialOcean")
+        setTheme("materialOcean")
+        localStorage.setItem('theme', 'materialOcean')
       } else if (theme === "matrix") {
         document.body.style.backgroundColor = "#110008"
         setAppTheme("matrix")
+        setTheme("matrix")
+        localStorage.setItem('theme', 'matrix')
       } else if (theme === "dracula") {
         document.body.style.backgroundColor = "#282a36"
         setAppTheme("dracula")
+        setTheme("dracula")
+        localStorage.setItem('theme', 'dracula')
       } else if (theme === "gruvbox") {
         document.body.style.backgroundColor = "#292828"
         setAppTheme("gruvbox")
+        setTheme("gruvbox")
+        localStorage.setItem('theme', 'gruvbox')
       }
     }
   }
