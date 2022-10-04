@@ -51,7 +51,7 @@ export default function Terminal() {
   }, [setAppTheme])
 
   const commands = {
-    svolume: (volume) => setVolumeCommand(volume),
+    svolume: (volume) => setVolumeCommand(volume / 100),
     nextsong: () => toNextSong(),
     prevsong: () => toPrevSong(),
     playpause: () => setIsPlaying(!isPlaying),
@@ -65,8 +65,7 @@ export default function Terminal() {
     ),
     help: (
       <span>
-        hello                   - say hello <br/>
-        svolume &lt;VOLUME&gt;  - set volume to &lt;volume&gt; <br/>
+        svolume &lt;VOLUME&gt;  - set volume to &lt;volume&gt; (0-100)<br/>
         nextsong                - play next song <br/>
         prevsong                - play previous song <br/>    
         playpause               - play or pauses the song <br/>
