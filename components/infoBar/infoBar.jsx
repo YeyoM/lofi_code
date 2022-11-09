@@ -124,9 +124,7 @@ export default function InfoBar() {
 
   return (
     <div className={classes.infoBar}>
-      <div className={classes.general} style={generalStyle}>
-        Lofi Terminal
-      </div>  
+       
       <div className={classes.progress} style={progressStyle}>
         {time} sec
       </div>
@@ -139,14 +137,14 @@ export default function InfoBar() {
       <div className={classes.date} style={dateStyle}>
         {date}
       </div>
-      <div className={classes.weather} style={weatherStyle}>
+      <marquee className={classes.weather} style={weatherStyle}>
         <Online>
-          {weather}
+          Current weather: {weather}.   Help make this app better by contributing to the project on GitHub! type &quot;contribute&quot; in the command promt
         </Online>
         <Offline>
-          Currently Offline, cant get weather.
+          Currently Offline, reconnect to get current weather and music
         </Offline>
-      </div>
+      </marquee>
     </div>  
   )
 }

@@ -40,16 +40,26 @@
 }
 
 @media only screen and (max-width: 1400px) {
-  .general, .date, .time, .weather, .progress, .volume {
-    width: 25%;
+  .general, .date, .time, .progress, .volume {
+    width: 40%;
+  }
+
+}
+
+@media only screen and (max-width: 600px) {
+  .date, .time {
+    display: none
+  }
+  .progress, .volume, .weather {
+    width: 40%;
   }
 }
 
-@media only screen and (max-width: 920px) {
-  .date, .time, .weather{
+@media only screen and (max-width: 440px) {
+  .date, .time {
     display: none
   }
-  .general, .progress, .volume {
+  .progress, .volume, .weather {
     width: 50%;
   }
 }

@@ -30,7 +30,7 @@ export default function Home({ songs }) {
   }, [appTheme])
 
   useEffect(() => {
-    setSongs(songs)
+    setSongs(songs.sort(function() { return Math.random() - 0.5  }))
   }, [songs, setSongs])
 
   return (

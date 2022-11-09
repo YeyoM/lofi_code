@@ -58,7 +58,7 @@ export default function Terminal() {
     about: (
       <span>
         Welcome to the lofi terminal<br />
-        Use it for those long coding sessions<br />
+        Use it for those long coding and study sessions<br />
         Created by <a href="https://github.com/YeyoM">YeyoM</a><br />
         Created with <a href="https://github.com/bony2023/react-terminal">react-terminal</a>
       </span>
@@ -75,6 +75,14 @@ export default function Terminal() {
         displaySongs            - display all songs   <br />
         changeTheme             - change theme (dark, materialDark, materialOcean, matrix, dracula)
       </span>
+    ),
+    contribute: (
+      <span>
+        Contribute <a href="https://github.com/YeyoM/lofi_code">here</a> to the project.<br/>
+        Share your thoughts, request new features or report bugs.<br/>
+        We want to hear you to make this project better.
+      </span>
+
     ),
     displaySongs: (
       <span>
