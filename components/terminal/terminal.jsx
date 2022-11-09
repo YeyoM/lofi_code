@@ -70,7 +70,8 @@ export default function Terminal() {
         prevsong                - play previous song <br/>    
         playpause               - play or pauses the song <br/>
         about                   - get more info <br/>
-        help                    - show this message <br/>    
+        help                    - show this message <br/> 
+        contribute              - contribute to the project and share your ideas<br/>   
         clear                   - clear screen  <br />
         displaySongs            - display all songs   <br />
         changeTheme             - change theme (dark, materialDark, materialOcean, matrix, dracula)
