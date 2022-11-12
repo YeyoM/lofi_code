@@ -1,6 +1,7 @@
 import SongBar from "../songBar/songBar"
 import Terminal from "../terminal/terminal"
 import InfoBar from "../infoBar/infoBar"
+import { AnalyticsWrapper } from '../analytics'
 
 import 'terminal.css'
 
@@ -12,6 +13,7 @@ export default function Main() {
       <Terminal />
       <SongBar />
       <InfoBar />
+      <AnalyticsWrapper />
     </div>
   )
 }

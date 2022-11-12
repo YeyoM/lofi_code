@@ -137,14 +137,14 @@ export default function InfoBar() {
       <div className={classes.date} style={dateStyle}>
         {date}
       </div>
-      <marquee className={classes.weather} style={weatherStyle}>
+      <div className={classes.weather} style={weatherStyle}>
         <Online>
-          Current weather: {weather}.   Help make this app better by contributing to the project on GitHub! type &quot;contribute&quot; in the command promt
+          Current weather: {weather}
         </Online>
         <Offline>
           Currently Offline, reconnect to get current weather and music
         </Offline>
-      </marquee>
+      </div>
     </div>  
   )
 }
