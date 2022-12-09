@@ -74,6 +74,7 @@ export const SongsContextProvider = ({ children }) => {
       if (isFirstRun.current) {
         isFirstRun.current = false
         setIsPlaying(false)
+        audioRef.current.pause()
       } else {
         if (isPlaying) {
           setIsPlaying(true)
