@@ -40,6 +40,11 @@ export const SongsContextProvider = ({ children }) => {
     }
   }, [songIndex, songs])
 
+  // check re entering app after refresh
+  useEffect(() => {
+    setIsPlaying(false)
+  }, [])
+
 
   // Play the current song in case isPlaying is true
   useEffect(() => {
