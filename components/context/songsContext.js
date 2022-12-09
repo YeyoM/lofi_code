@@ -40,12 +40,6 @@ export const SongsContextProvider = ({ children }) => {
     }
   }, [songIndex, songs])
 
-  // check re entering app after refresh
-  useEffect(() => {
-    setIsPlaying(false)
-  }, [])
-
-
   // Play the current song in case isPlaying is true
   useEffect(() => {
     if (isPlaying) {
@@ -61,6 +55,12 @@ export const SongsContextProvider = ({ children }) => {
       audioRef.current.pause()
       clearInterval(intervalRef.current)
     }
+  }, [])
+
+  // check re entering app after refresh
+  useEffect(() => {
+    setIsPlaying(false)
+    audioRef.current.pause()
   }, [])
 
 
