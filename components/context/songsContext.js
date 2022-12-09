@@ -68,7 +68,11 @@ export const SongsContextProvider = ({ children }) => {
 
     if (isReady.current) {
       audioRef.current.play()
-      setIsPlaying(true)
+      if (isPlaying) {
+        setIsPlaying(true)
+      } else {
+        setIsPlaying(false)
+      }
       startTimer()
       audioRef.current.volume = volume
     } else {
@@ -76,6 +80,10 @@ export const SongsContextProvider = ({ children }) => {
     }
   // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [songIndex, path])
+
+  const clickPlayBtn = () => {
+    setIsPlaying(!isPlaying)
+  }
 
   /* Setting the current time of the song to the songProgress state. */
   const startTimer = () => {
@@ -136,6 +144,7 @@ export const SongsContextProvider = ({ children }) => {
       setSongIndex,
       isPlaying,
       setIsPlaying,
+      clickPlayBtn,
       toPrevSong,
       toNextSong,
       onVolumeUp,

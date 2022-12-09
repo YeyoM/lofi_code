@@ -12,7 +12,7 @@ export default function SongBar() {
 
   const { 
     isPlaying,
-    setIsPlaying,
+    clickPlayBtn,
     toPrevSong,
     toNextSong,
     onVolumeUp,
@@ -42,7 +42,7 @@ export default function SongBar() {
           isPlaying={isPlaying}
           onPrevClick={toPrevSong}
           onNextClick={toNextSong}
-          onPlayPauseClick={setIsPlaying}
+          onPlayPauseClick={clickPlayBtn}
         />
       </div>
 

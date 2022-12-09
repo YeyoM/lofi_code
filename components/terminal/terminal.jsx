@@ -6,7 +6,7 @@ import { SongsContext } from '../context/songsContext.js'
 
 import classes from './terminal.module.css'
 
-const welcomeMessage = (<marquee><span>Welcome to the <a href="https://github.com/YeyoM/lofi_code">lofi terminal</a>, type &quot;help&quot; for all the available commands.    Help make this app better by contributing to the project on GitHub! type &quot;contribute&quot; in the command promt.<br /></span></marquee>)
+const welcomeMessage = (<div><span>Welcome to the <a href="https://github.com/YeyoM/lofi_code">lofi terminal</a>, type &quot;help&quot; for all the available commands.<br /></span></div>)
 
 export default function Terminal() {
 
