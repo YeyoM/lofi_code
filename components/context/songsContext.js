@@ -23,6 +23,9 @@ export const SongsContextProvider = ({ children }) => {
   const [path, setPath] = useState('')
   const [id, setId] = useState('')
 
+  // check if is the first time the app is loaded
+  const isFirstRun = useRef(true)
+
   // Ref for the current song's audio element
   const audioRef = useRef(audio)
   const intervalRef = useRef()
@@ -57,13 +60,6 @@ export const SongsContextProvider = ({ children }) => {
     }
   }, [])
 
-  // check re entering app after refresh
-  useEffect(() => {
-    setIsPlaying(false)
-    audioRef.current.pause()
-  }, [])
-
-
   /* Creating a new Audio element and setting the current time to the songProgress state. */
   useEffect(() => {
     audioRef.current.pause()
@@ -73,10 +69,17 @@ export const SongsContextProvider = ({ children }) => {
 
     if (isReady.current) {
       audioRef.current.play()
-      if (isPlaying) {
-        setIsPlaying(true)
-      } else {
+      // check if is the first time the app is loaded
+      // to set the isPlaying state to false
+      if (isFirstRun.current) {
+        isFirstRun.current = false
         setIsPlaying(false)
+      } else {
+        if (isPlaying) {
+          setIsPlaying(true)
+        } else {
+          setIsPlaying(false)
+        }
       }
       startTimer()
       audioRef.current.volume = volume
