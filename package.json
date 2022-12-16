@@ -24,7 +24,12 @@
     "terminal.css": "^0.7.2"
   },
   "devDependencies": {
-    "eslint": "8.18.0",
-    "eslint-config-next": "12.1.6"
+    "eslint": "^8.29.0",
+    "eslint-config-next": "12.1.6",
+    "eslint-config-standard": "^17.0.0",
+    "eslint-plugin-react": "^7.31.11",
+    "eslint-plugin-import": "^2.26.0",
+    "eslint-plugin-n": "^15.6.0",
+    "eslint-plugin-promise": "^6.1.1"
   }
 }
