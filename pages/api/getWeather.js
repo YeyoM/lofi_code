@@ -1,7 +1,6 @@
 import 'dotenv/config'
 
 export default async function handler (req, res) {
-
   if (req.method === 'POST') {
     const { latitude, longitude } = req.body
 
@@ -15,5 +14,4 @@ export default async function handler (req, res) {
 
     return res.status(200).send(weatherData)
   }
-
 }
