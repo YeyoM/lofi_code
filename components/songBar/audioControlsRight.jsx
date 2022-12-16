@@ -3,7 +3,7 @@ import VolumeDownBtn from './assets/volumeDownBtn.svg'
 
 import classes from './audioControls.module.css'
 
-export default function audioControlsRight({ onVolumeUpClick, onVolumeDownClick }) {
+export default function audioControlsRight ({ onVolumeUpClick, onVolumeDownClick }) {
   return (
     <div className={classes.audioControlsRight}>
       <button

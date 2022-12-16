@@ -4,13 +4,12 @@ import AudioControlsRight from './audioControlsRight.jsx'
 import { useContext } from 'react'
 import { SongsContext } from '../context/songsContext.js'
 
-import { Offline, Online } from "react-detect-offline"
+import { Offline, Online } from 'react-detect-offline'
 
 import classes from './songBar.module.css'
 
-export default function SongBar() {
-
-  const { 
+export default function SongBar () {
+  const {
     isPlaying,
     clickPlayBtn,
     toPrevSong,
@@ -27,7 +26,7 @@ export default function SongBar() {
       <Online>
         <div className={classes.left}>
           <p><span className={classes.currentlyPlaying}>Currently Playing: </span>{title}</p>
-          <p className={classes.bottom}><span className={classes.currentlyPlaying}>By: </span>{author || "unknown"}</p>
+          <p className={classes.bottom}><span className={classes.currentlyPlaying}>By: </span>{author || 'unknown'}</p>
         </div>
       </Online>
 

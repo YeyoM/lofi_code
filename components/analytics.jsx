@@ -1,6 +1,6 @@
-'use client';
-import { Analytics } from '@vercel/analytics/react';
+'use client'
+import { Analytics } from '@vercel/analytics/react'
 
-export function AnalyticsWrapper() {
-  return <Analytics />;
+export function AnalyticsWrapper () {
+  return <Analytics />
 }

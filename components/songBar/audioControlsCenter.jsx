@@ -5,7 +5,7 @@ import PrevBtn from './assets/prevBtn.svg'
 
 import classes from './audioControls.module.css'
 
-export default function audioControlsCenter({ isPlaying, onPlayPauseClick, onPrevClick, onNextClick }) {
+export default function audioControlsCenter ({ isPlaying, onPlayPauseClick, onPrevClick, onNextClick }) {
   return (
     <div className={classes.audioControlsCenter}>
       <button
@@ -16,7 +16,8 @@ export default function audioControlsCenter({ isPlaying, onPlayPauseClick, onPre
       >
         <PrevBtn />
       </button>
-      {isPlaying ? (
+      {isPlaying
+        ? (
         <button
           type="button"
           className={classes.pause}
@@ -25,7 +26,8 @@ export default function audioControlsCenter({ isPlaying, onPlayPauseClick, onPre
         >
           <PauseBtn />
         </button>
-      ) : (
+          )
+        : (
         <button
           type="button"
           className={classes.play}
@@ -34,7 +36,7 @@ export default function audioControlsCenter({ isPlaying, onPlayPauseClick, onPre
         >
           <PlayBtn />
         </button>
-      )}
+          )}
       <button
         type="button"
         className={classes.next}

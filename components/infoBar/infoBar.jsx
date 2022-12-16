@@ -1,6 +1,5 @@
 import { SongsContext } from '../context/songsContext.js'
-import { useState, useEffect } from 'react'
-import { useContext } from 'react'
+import { useState, useEffect, useContext } from 'react'
 
 import infobarChangeTheme from './infobarChangeTheme.js'
 import classes from './infoBar.module.css'
@@ -11,13 +10,12 @@ import useGeolocation from '../../hooks/useGeolocation/useGeolocation'
 
 import { Offline, Online } from 'react-detect-offline'
 
-export default function InfoBar() {
-
-  const { 
-    songProgress, 
+export default function InfoBar () {
+  const {
+    songProgress,
     volume,
     appTheme
-  } = useContext( SongsContext )
+  } = useContext(SongsContext)
 
   const [date, setDate] = useState()
   const [time, setTime] = useState()
@@ -26,16 +24,14 @@ export default function InfoBar() {
   const [weather, setWeather] = useState()
   const [hour, setHour] = useState()
   const [volumePercentage, setVolumePercentage] = useState()
-  const [generalStyle, setGeneralStyle] = useState({})
+  const [setGeneralStyle] = useState({})
   const [timeStyle, setTimeStyle] = useState({})
   const [volumeStyle, setVolumeStyle] = useState({})
   const [progressStyle, setProgressStyle] = useState({})
   const [weatherStyle, setWeatherStyle] = useState({})
   const [dateStyle, setDateStyle] = useState({})
 
-
   const location = useGeolocation()
-
 
   /* Setting the date, weather, and time. */
   useEffect(() => {
@@ -45,7 +41,9 @@ export default function InfoBar() {
       setLongitude(location.coordinates.longitude)
       getWeather(latitude, longitude).then(data => {
         setWeather(data.weather[0].main)
+      // eslint-disable-next-line n/handle-callback-err
       }).catch(error => {
+        setWeather('Climate here... Allow location services to work and refresh.')
       })
     } else {
       setWeather('Climate here... Allow location services to work and refresh.')
@@ -82,7 +80,7 @@ export default function InfoBar() {
 
   return (
     <div className={classes.infoBar}>
-       
+
       <div className={classes.progress} style={progressStyle}>
         {time} sec
       </div>
@@ -103,6 +101,6 @@ export default function InfoBar() {
           Currently Offline, reconnect to get current weather and music
         </Offline>
       </div>
-    </div>  
+    </div>
   )
 }

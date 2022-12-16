@@ -1,8 +1,7 @@
-import React, { createContext, useState, useEffect, useRef } from "react"
+import React, { createContext, useState, useEffect, useRef } from 'react'
 export const SongsContext = createContext()
 
 export const SongsContextProvider = ({ children }) => {
-
   // General state for the songs
   const [songs, setSongs] = useState([])
 
@@ -14,14 +13,14 @@ export const SongsContextProvider = ({ children }) => {
   const [songProgress, setSongProgress] = useState(0)
   const [volume, setVolume] = useState(0.5)
 
-  // State for the current song's audio element
-  const [audio, setAudio] = useState(typeof Audio !== "undefined" && new Audio(path))
-
   // State for the current song information
   const [title, setTitle] = useState('')
   const [author, setAuthor] = useState('')
   const [path, setPath] = useState('')
   const [id, setId] = useState('')
+
+  // State for the current song's audio element
+  const [audio] = useState(typeof Audio !== 'undefined' && new Audio(path))
 
   // check if is the first time the app is loaded
   const isFirstRun = useRef(true)
@@ -31,7 +30,7 @@ export const SongsContextProvider = ({ children }) => {
   const intervalRef = useRef()
   const isReady = useRef(false)
 
-  const [appTheme, setAppTheme] = useState("dracula")
+  const [appTheme, setAppTheme] = useState('dracula')
 
   // Set the current song's information state
   useEffect(() => {
@@ -87,7 +86,6 @@ export const SongsContextProvider = ({ children }) => {
     } else {
       isReady.current = true
     }
-  // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [songIndex, path])
 
   const clickPlayBtn = () => {
@@ -97,15 +95,14 @@ export const SongsContextProvider = ({ children }) => {
   /* Setting the current time of the song to the songProgress state. */
   const startTimer = () => {
     clearInterval(intervalRef.current)
-
-	  intervalRef.current = setInterval(() => {
-	    if (audioRef.current.ended) {
-	      toNextSong()
-	    } else {
-	      setSongProgress(audioRef.current.currentTime)
-	    }
-	  }, [1000])
-	}
+    intervalRef.current = setInterval(() => {
+      if (audioRef.current.ended) {
+        toNextSong()
+      } else {
+        setSongProgress(audioRef.current.currentTime)
+      }
+    }, [1000])
+  }
 
   /* Functions to control the current song list and current song properties */
   const toPrevSong = () => {
@@ -165,7 +162,7 @@ export const SongsContextProvider = ({ children }) => {
       path,
       songProgress,
       volume,
-      appTheme, 
+      appTheme,
       setAppTheme
     }}>
       { children }
