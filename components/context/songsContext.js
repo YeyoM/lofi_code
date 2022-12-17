@@ -67,7 +67,6 @@ export const SongsContextProvider = ({ children }) => {
     setSongProgress(audioRef.current.currentTime)
 
     if (isReady.current) {
-      audioRef.current.play()
       // check if is the first time the app is loaded
       // to set the isPlaying state to false
       if (isFirstRun.current) {
@@ -77,6 +76,7 @@ export const SongsContextProvider = ({ children }) => {
       } else {
         if (isPlaying) {
           setIsPlaying(true)
+          audioRef.current.play()
         } else {
           setIsPlaying(false)
         }
