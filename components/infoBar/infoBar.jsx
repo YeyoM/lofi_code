@@ -24,8 +24,7 @@ export default function InfoBar () {
   const [weather, setWeather] = useState()
   const [hour, setHour] = useState()
   const [volumePercentage, setVolumePercentage] = useState()
-  const [setGeneralStyle] = useState({})
-  const [timeStyle, setTimeStyle] = useState({})
+  const [timeStyle, setTimeStyle] = useState()
   const [volumeStyle, setVolumeStyle] = useState({})
   const [progressStyle, setProgressStyle] = useState({})
   const [weatherStyle, setWeatherStyle] = useState({})
@@ -73,8 +72,7 @@ export default function InfoBar () {
   }, [volume])
 
   useEffect(() => {
-    // change the inline styles for the infobar bgcolors
-    infobarChangeTheme(appTheme, setGeneralStyle, setTimeStyle, setVolumeStyle, setProgressStyle, setWeatherStyle, setDateStyle)
+    infobarChangeTheme({ appTheme, setTimeStyle, setVolumeStyle, setProgressStyle, setWeatherStyle, setDateStyle })
   }, [appTheme])
 
   return (
