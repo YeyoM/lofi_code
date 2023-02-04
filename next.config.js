@@ -7,12 +7,13 @@ const nextConfig = withPWA({
     dest: 'public',
     register: true,
     skipWaiting: true,
-    mode: 'production'
+    mode: 'production',
+    disable: process.env.NODE_ENV === 'development'
   },
-  webpack(config) {
+  webpack (config) {
     config.module.rules.push({
       test: /\.svg$/,
-      use: ["@svgr/webpack"]
+      use: ['@svgr/webpack']
     })
     return config
   }
