@@ -1,5 +1,5 @@
 export default async function getWeather (latitude, longitude) {
-  const currentHost = process.env.NEXT_PUBLIC_HOST || 'localhost:3000 for dev'
+  const currentHost = process.env.NEXT_PUBLIC_HOST
 
   const response = await fetch(currentHost, {
     method: 'POST',
