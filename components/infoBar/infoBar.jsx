@@ -41,9 +41,8 @@ export default function InfoBar () {
       setLongitude(location.coordinates.longitude)
       getWeather(latitude, longitude).then(data => {
         setWeather(data.weather[0].main)
-      // eslint-disable-next-line n/handle-callback-err
       }).catch(error => {
-        setWeather('Climate here... Allow location services to work and refresh.')
+        setWeather(error.message)
       })
     } else {
       setWeather('Climate here... Allow location services to work and refresh.')
