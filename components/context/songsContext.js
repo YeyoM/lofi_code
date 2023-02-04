@@ -30,7 +30,7 @@ export const SongsContextProvider = ({ children }) => {
   const intervalRef = useRef()
   const isReady = useRef(false)
 
-  const [appTheme, setAppTheme] = useState('dracula')
+  const [appTheme, setAppTheme] = useState('')
 
   // Set the current song's information state
   useEffect(() => {
