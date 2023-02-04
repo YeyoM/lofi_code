@@ -30,10 +30,6 @@
   flex-basis: 0;
 }
 
-.bottom {
-  margin-bottom: 0;
-}
-
 @media only screen and (max-width: 920px) {
   .songBar {
     height: 7.5rem;

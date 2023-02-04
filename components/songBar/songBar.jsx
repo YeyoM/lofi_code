@@ -1,10 +1,9 @@
+import AudioControlsLeft from './audioControlsLeft.jsx'
 import AudioControlsCenter from './audioControlsCenter.jsx'
 import AudioControlsRight from './audioControlsRight.jsx'
 
 import { useContext } from 'react'
 import { SongsContext } from '../context/songsContext.js'
-
-import { Offline, Online } from 'react-detect-offline'
 
 import classes from './songBar.module.css'
 
@@ -23,18 +22,12 @@ export default function SongBar () {
   return (
     <div className={classes.songBar}>
 
-      <Online>
-        <div className={classes.left}>
-          <p><span className={classes.currentlyPlaying}>Currently Playing: </span>{title}</p>
-          <p className={classes.bottom}><span className={classes.currentlyPlaying}>By: </span>{author || 'unknown'}</p>
-        </div>
-      </Online>
-
-      <Offline>
-        <div className={classes.left}>
-          <p>Unable to reproduce songs</p>
-        </div>
-      </Offline>
+      <div className={classes.left}>
+        <AudioControlsLeft
+          title={title}
+          author={author}
+        />
+      </div>
 
       <div className={classes.center}>
         <AudioControlsCenter

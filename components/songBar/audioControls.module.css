@@ -1,6 +1,10 @@
-.audioControlsRight, .audioControlsCenter {
+.audioControlsRight, .audioControlsCenter, .audioControlsLeft {
   display: flex;
   width:  100%;
+}
+
+.audioControlsLeft {
+  justify-content: start;
 }
 
 .audioControlsCenter {
@@ -39,5 +43,12 @@
   background-color: inherit;
 }
 
+.currentlyPlaying {
+  margin: 0 0 0.4rem 0;
+}
+
+.bottom {
+  margin: 0.4rem 0 0 0;
+}
 
 
