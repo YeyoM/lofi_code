@@ -10,7 +10,7 @@ export default function Home ({ songs }) {
     setSongs
   } = useContext(SongsContext)
 
-  const [themeColor, setThemeColor] = useState('#110008')
+  const [themeColor, setThemeColor] = useState('')
 
   useEffect(() => {
     if (appTheme === 'dracula') {

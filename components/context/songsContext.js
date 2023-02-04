@@ -42,6 +42,31 @@ export const SongsContextProvider = ({ children }) => {
     }
   }, [songIndex, songs])
 
+  useEffect(() => {
+    const localTheme = localStorage.getItem('theme')
+    setAppTheme(localStorage.getItem('theme'))
+    if (!localTheme) {
+      localStorage.setItem('theme', 'matrix')
+      setAppTheme('matrix')
+      document.body.style.backgroundColor = '#110008'
+    } else {
+      setAppTheme(localTheme)
+      if (localTheme === 'dark') {
+        document.body.style.backgroundColor = '#002833'
+      } else if (localTheme === 'materialDark') {
+        document.body.style.backgroundColor = '#151515'
+      } else if (localTheme === 'materialOcean') {
+        document.body.style.backgroundColor = '#263238'
+      } else if (localTheme === 'matrix') {
+        document.body.style.backgroundColor = '#110008'
+      } else if (localTheme === 'dracula') {
+        document.body.style.backgroundColor = '#282a36'
+      } else if (localTheme === 'gruvbox') {
+        document.body.style.backgroundColor = '#292828'
+      }
+    }
+  }, [setAppTheme])
+
   // Play the current song in case isPlaying is true
   useEffect(() => {
     if (isPlaying) {

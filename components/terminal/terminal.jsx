@@ -7,7 +7,7 @@ import { welcomeMessage } from './welcomeMessage.js'
 import classes from './terminal.module.css'
 
 export default function Terminal () {
-  const [theme, setTheme] = useState('matrix')
+  const [theme, setTheme] = useState('')
   const [appCommands, setAppCommands] = useState(null)
 
   const {
@@ -17,7 +17,8 @@ export default function Terminal () {
     toNextSong,
     setVolumeCommand,
     songs,
-    setAppTheme
+    setAppTheme,
+    appTheme
   } = useContext(SongsContext)
 
   useEffect(() => {
@@ -38,30 +39,8 @@ export default function Terminal () {
   }, [setAppCommands, setVolumeCommand, toNextSong, toPrevSong, setIsPlaying, isPlaying, songs, setAppTheme])
 
   useEffect(() => {
-    setTheme(localStorage.getItem('theme'))
-    if (!theme) {
-      localStorage.setItem('theme', 'matrix')
-      setAppTheme('matrix')
-      setTheme('matrix')
-      document.body.style.backgroundColor = '#110008'
-    } else {
-      setAppTheme(theme)
-      setTheme(theme)
-      if (theme === 'dark') {
-        document.body.style.backgroundColor = '#002833'
-      } else if (theme === 'materialDark') {
-        document.body.style.backgroundColor = '#151515'
-      } else if (theme === 'materialOcean') {
-        document.body.style.backgroundColor = '#263238'
-      } else if (theme === 'matrix') {
-        document.body.style.backgroundColor = '#110008'
-      } else if (theme === 'dracula') {
-        document.body.style.backgroundColor = '#282a36'
-      } else if (theme === 'gruvbox') {
-        document.body.style.backgroundColor = '#292828'
-      }
-    }
-  }, [setAppTheme])
+    setTheme(appTheme)
+  }, [appTheme])
 
   return (
     <TerminalContextProvider>
