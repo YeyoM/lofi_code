@@ -17,19 +17,22 @@ export default function InfoBar () {
     appTheme
   } = useContext(SongsContext)
 
+  // States for the info bar
   const [date, setDate] = useState()
+  const [currentProgress, setCurrentProgress] = useState()
   const [time, setTime] = useState()
+  const [weather, setWeather] = useState()
   const [latitude, setLatitude] = useState()
   const [longitude, setLongitude] = useState()
-  const [weather, setWeather] = useState()
-  const [hour, setHour] = useState()
+  const [currentProgressStyle, setCurrentProgressStyle] = useState()
   const [volumePercentage, setVolumePercentage] = useState()
-  const [timeStyle, setTimeStyle] = useState()
+  const [loadingWeather, setLoadingWeather] = useState(false)
+
+  // States for the styles (infoBar) used in the infobarChangeTheme function
   const [volumeStyle, setVolumeStyle] = useState({})
   const [progressStyle, setProgressStyle] = useState({})
   const [weatherStyle, setWeatherStyle] = useState({})
   const [dateStyle, setDateStyle] = useState({})
-  const [loadingWeather, setLoadingWeather] = useState(false)
 
   const location = useGeolocation()
 
@@ -53,7 +56,7 @@ export default function InfoBar () {
       setWeather('Climate here... Allow location services to work and refresh.')
     }
     setInterval(() => {
-      setHour(new Date().toLocaleTimeString())
+      setTime(new Date().toLocaleTimeString())
     }, 1000)
   }, [location, latitude, longitude])
 
@@ -62,13 +65,13 @@ export default function InfoBar () {
     const minutes = Math.floor(songProgress / 60)
     const seconds = Math.floor(songProgress % 60)
     if (seconds < 10 && minutes < 10) {
-      setTime(`0${minutes}:0${seconds}`)
+      setCurrentProgress(`0${minutes}:0${seconds}`)
     } else if (seconds < 10 && minutes >= 10) {
-      setTime(`${minutes}:0${seconds}`)
+      setCurrentProgress(`${minutes}:0${seconds}`)
     } else if (seconds >= 10 && minutes < 10) {
-      setTime(`0${minutes}:${seconds}`)
+      setCurrentProgress(`0${minutes}:${seconds}`)
     } else {
-      setTime(`${minutes}:${seconds}`)
+      setCurrentProgress(`${minutes}:${seconds}`)
     }
   }, [songProgress])
 
@@ -78,20 +81,20 @@ export default function InfoBar () {
   }, [volume])
 
   useEffect(() => {
-    infobarChangeTheme({ appTheme, setTimeStyle, setVolumeStyle, setProgressStyle, setWeatherStyle, setDateStyle })
+    infobarChangeTheme({ appTheme, setCurrentProgressStyle, setVolumeStyle, setProgressStyle, setWeatherStyle, setDateStyle })
   }, [appTheme])
 
   return (
     <div className={classes.infoBar}>
 
       <div className={classes.progress} style={progressStyle}>
-        {time} sec
+        {currentProgress} sec
       </div>
       <div className={classes.volume} style={volumeStyle}>
         vol {volumePercentage}%
       </div>
-      <div className={classes.time} style={timeStyle}>
-        {hour}
+      <div className={classes.time} style={currentProgressStyle}>
+        {time}
       </div>
       <div className={classes.date} style={dateStyle}>
         {date}
