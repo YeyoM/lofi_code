@@ -83,7 +83,7 @@ Distributed under the MIT License. See `LICENSE.txt` for more information.
 <!-- CONTACT -->
 ## Contact
 
-YeyoM - [@YeyoMoreno24](https://twitter.com/YeyoMoreno24) - yeyomoreno2003@hotmail.com
+YeyoM - yeyomoreno2003@hotmail.com
 
 Lofi Terminal - [https://github.com/YeyoM/lofi_code](https://github.com/YeyoM/lofi_code)
 
