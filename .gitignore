@@ -32,5 +32,3 @@ yarn-error.log*
 .vercel
 
 .env
-
-lofi-terminal-db.json
