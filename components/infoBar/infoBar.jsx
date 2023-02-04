@@ -29,6 +29,7 @@ export default function InfoBar () {
   const [progressStyle, setProgressStyle] = useState({})
   const [weatherStyle, setWeatherStyle] = useState({})
   const [dateStyle, setDateStyle] = useState({})
+  const [loadingWeather, setLoadingWeather] = useState(false)
 
   const location = useGeolocation()
 
@@ -36,13 +37,18 @@ export default function InfoBar () {
   useEffect(() => {
     setDate(getDate())
     if (location.coordinates) {
+      setLoadingWeather(true)
       setLatitude(location.coordinates.latitude)
       setLongitude(location.coordinates.longitude)
-      getWeather(latitude, longitude).then(data => {
-        setWeather(data.weather[0].main)
-      }).catch(error => {
-        setWeather(error.message)
-      })
+      getWeather(latitude, longitude)
+        .then(data => {
+          setWeather(data.weather[0].main)
+          setLoadingWeather(false)
+        })
+        .catch(error => {
+          setWeather(error.message)
+          setLoadingWeather(false)
+        })
     } else {
       setWeather('Climate here... Allow location services to work and refresh.')
     }
@@ -92,7 +98,7 @@ export default function InfoBar () {
       </div>
       <div className={classes.weather} style={weatherStyle}>
         <Online>
-          Current weather: {weather}
+          {loadingWeather ? 'Loading...' : weather}
         </Online>
         <Offline>
           Currently Offline, reconnect to get current weather and music
