@@ -1,11 +1,11 @@
-import { SongsContext } from '../context/songsContext.js'
 import { useState, useEffect, useContext } from 'react'
+import { SongsContext } from '../context/songsContext.js'
 
-import infobarChangeTheme from './infobarChangeTheme.js'
 import classes from './infoBar.module.css'
 
-import getWeather from './functions/getWeather.js'
 import getDate from './functions/getDate.js'
+import getWeather from './functions/getWeather.js'
+import infobarChangeTheme from './infobarChangeTheme.js'
 import useGeolocation from '../../hooks/useGeolocation/useGeolocation'
 
 import { Offline, Online } from 'react-detect-offline'
@@ -17,28 +17,50 @@ export default function InfoBar () {
     appTheme
   } = useContext(SongsContext)
 
+  const location = useGeolocation()
+
   // States for the info bar
   const [date, setDate] = useState()
-  const [currentProgress, setCurrentProgress] = useState()
   const [time, setTime] = useState()
   const [weather, setWeather] = useState()
   const [latitude, setLatitude] = useState()
   const [longitude, setLongitude] = useState()
-  const [currentProgressStyle, setCurrentProgressStyle] = useState()
+  const [currentProgress, setCurrentProgress] = useState()
   const [volumePercentage, setVolumePercentage] = useState()
   const [loadingWeather, setLoadingWeather] = useState(false)
+  const [currentProgressStyle, setCurrentProgressStyle] = useState()
 
   // States for the styles (infoBar) used in the infobarChangeTheme function
-  const [volumeStyle, setVolumeStyle] = useState({})
-  const [progressStyle, setProgressStyle] = useState({})
-  const [weatherStyle, setWeatherStyle] = useState({})
   const [dateStyle, setDateStyle] = useState({})
+  const [volumeStyle, setVolumeStyle] = useState({})
+  const [weatherStyle, setWeatherStyle] = useState({})
+  const [progressStyle, setProgressStyle] = useState({})
 
-  const location = useGeolocation()
-
-  /* Setting the date, weather, and time. */
+  /* Setting the date */
   useEffect(() => {
     setDate(getDate())
+  }, [])
+
+  /* Setting the volume percentage. */
+  useEffect(() => {
+    setVolumePercentage(Math.round(volume * 100))
+  }, [volume])
+
+  /* Changing the theme of the info bar. */
+  useEffect(() => {
+    infobarChangeTheme({ appTheme, setCurrentProgressStyle, setVolumeStyle, setProgressStyle, setWeatherStyle, setDateStyle })
+  }, [appTheme])
+
+  /* Setting and updating the time */
+  useEffect(() => {
+    setTime(new Date().toLocaleTimeString())
+    setInterval(() => {
+      setTime(new Date().toLocaleTimeString())
+    }, 1000)
+  }, [])
+
+  /* Setting the weather */
+  useEffect(() => {
     if (location.coordinates) {
       setLoadingWeather(true)
       setLatitude(location.coordinates.latitude)
@@ -55,12 +77,9 @@ export default function InfoBar () {
     } else {
       setWeather('Climate here... Allow location services to work and refresh.')
     }
-    setInterval(() => {
-      setTime(new Date().toLocaleTimeString())
-    }, 1000)
   }, [location, latitude, longitude])
 
-  /* Setting the time. */
+  /* Setting and update the current progress */
   useEffect(() => {
     const minutes = Math.floor(songProgress / 60)
     const seconds = Math.floor(songProgress % 60)
@@ -75,18 +94,8 @@ export default function InfoBar () {
     }
   }, [songProgress])
 
-  /* Setting the volume percentage. */
-  useEffect(() => {
-    setVolumePercentage(Math.round(volume * 100))
-  }, [volume])
-
-  useEffect(() => {
-    infobarChangeTheme({ appTheme, setCurrentProgressStyle, setVolumeStyle, setProgressStyle, setWeatherStyle, setDateStyle })
-  }, [appTheme])
-
   return (
     <div className={classes.infoBar}>
-
       <div className={classes.progress} style={progressStyle}>
         {currentProgress} sec
       </div>
