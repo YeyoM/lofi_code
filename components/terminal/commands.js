@@ -49,37 +49,31 @@ export default function commands (props) {
       if (!validThemes.includes(theme)) {
         return `Theme ${theme} not valid. Try one of ${validThemes.join(', ')}`
       }
-      props.setTheme(theme)
+      props.setAppTheme(theme)
       if (theme === 'dark') {
         document.body.style.backgroundColor = '#002833'
         props.setAppTheme('dark')
-        props.setTheme('dark')
         localStorage.setItem('theme', 'dark')
         // cambiar los colores de cada infobar para que luego se apliquen a la app
       } else if (theme === 'materialDark') {
         document.body.style.backgroundColor = '#151515'
         props.setAppTheme('materialDark')
-        props.setTheme('materialDark')
         localStorage.setItem('theme', 'materialDark')
       } else if (theme === 'materialOcean') {
         document.body.style.backgroundColor = '#263238'
         props.setAppTheme('materialOcean')
-        props.setTheme('materialOcean')
         localStorage.setItem('theme', 'materialOcean')
       } else if (theme === 'matrix') {
         document.body.style.backgroundColor = '#110008'
         props.setAppTheme('matrix')
-        props.setTheme('matrix')
         localStorage.setItem('theme', 'matrix')
       } else if (theme === 'dracula') {
         document.body.style.backgroundColor = '#282a36'
         props.setAppTheme('dracula')
-        props.setTheme('dracula')
         localStorage.setItem('theme', 'dracula')
       } else if (theme === 'gruvbox') {
         document.body.style.backgroundColor = '#292828'
         props.setAppTheme('gruvbox')
-        props.setTheme('gruvbox')
         localStorage.setItem('theme', 'gruvbox')
       }
     }

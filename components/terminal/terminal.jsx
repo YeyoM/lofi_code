@@ -2,12 +2,12 @@ import { useContext, useState, useEffect } from 'react'
 import { ReactTerminal, TerminalContextProvider } from 'react-terminal'
 
 import { SongsContext } from '../context/songsContext.js'
-import commands from './commands.js'
 import { welcomeMessage } from './welcomeMessage.js'
+import commands from './commands.js'
+
 import classes from './terminal.module.css'
 
 export default function Terminal () {
-  const [theme, setTheme] = useState('')
   const [appCommands, setAppCommands] = useState(null)
 
   const {
@@ -31,22 +31,17 @@ export default function Terminal () {
           setIsPlaying,
           isPlaying,
           songs,
-          setTheme,
           setAppTheme
         }
       )
     )
   }, [setAppCommands, setVolumeCommand, toNextSong, toPrevSong, setIsPlaying, isPlaying, songs, setAppTheme])
 
-  useEffect(() => {
-    setTheme(appTheme)
-  }, [appTheme])
-
   return (
     <TerminalContextProvider>
       <div className={classes.terminal}>
       <ReactTerminal
-        theme={theme}
+        theme={appTheme}
         themes={{
           gruvbox: {
             themeBGColor: '#66000000',
@@ -75,8 +70,8 @@ export default function Terminal () {
           },
           dracula: {
             themeBGColor: '#66000000',
-            themePromptColor: '#a60fa6', // morado
-            themeColor: '#ffffff' // blanco
+            themePromptColor: '#a60fa6',
+            themeColor: '#ffffff'
           }
         }}
         welcomeMessage={welcomeMessage}

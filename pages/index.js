@@ -29,8 +29,8 @@ export default function Home ({ songs }) {
   }, [appTheme])
 
   useEffect(() => {
-    setSongs(songs.sort(function () { return Math.random() - 0.5 }))
-  }, [songs, setSongs])
+    setSongs(songs)
+  }, [songs])
 
   return (
     <Fragment>
