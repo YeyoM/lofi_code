@@ -28,10 +28,10 @@ export default function InfoBar () {
   const [currentProgress, setCurrentProgress] = useState()
   const [volumePercentage, setVolumePercentage] = useState()
   const [loadingWeather, setLoadingWeather] = useState(false)
-  const [currentProgressStyle, setCurrentProgressStyle] = useState()
 
   // States for the styles (infoBar) used in the infobarChangeTheme function
   const [dateStyle, setDateStyle] = useState({})
+  const [timeStyle, setTimeStyle] = useState({})
   const [volumeStyle, setVolumeStyle] = useState({})
   const [weatherStyle, setWeatherStyle] = useState({})
   const [progressStyle, setProgressStyle] = useState({})
@@ -48,7 +48,7 @@ export default function InfoBar () {
 
   /* Changing the theme of the info bar. */
   useEffect(() => {
-    infobarChangeTheme({ appTheme, setCurrentProgressStyle, setVolumeStyle, setProgressStyle, setWeatherStyle, setDateStyle })
+    infobarChangeTheme({ appTheme, setTimeStyle, setVolumeStyle, setProgressStyle, setWeatherStyle, setDateStyle })
   }, [appTheme])
 
   /* Setting and updating the time */
@@ -102,7 +102,7 @@ export default function InfoBar () {
       <div className={classes.volume} style={volumeStyle}>
         vol {volumePercentage}%
       </div>
-      <div className={classes.time} style={currentProgressStyle}>
+      <div className={classes.time} style={timeStyle}>
         {time}
       </div>
       <div className={classes.date} style={dateStyle}>
