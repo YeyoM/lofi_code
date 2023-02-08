@@ -8,7 +8,7 @@ import getWeather from './functions/getWeather.js'
 import infobarChangeTheme from './infobarChangeTheme.js'
 import useGeolocation from '../../hooks/useGeolocation/useGeolocation'
 
-import { Offline, Online } from 'react-detect-offline'
+import { Online } from 'react-detect-offline'
 
 export default function InfoBar () {
   const {
@@ -112,9 +112,6 @@ export default function InfoBar () {
         <Online>
           {loadingWeather ? 'Loading...' : weather}
         </Online>
-        <Offline>
-          Currently Offline, reconnect to get current weather and music
-        </Offline>
       </div>
     </div>
   )
