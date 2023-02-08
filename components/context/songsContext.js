@@ -19,16 +19,13 @@ export const SongsContextProvider = ({ children }) => {
   const [path, setPath] = useState('')
   const [id, setId] = useState('')
 
-  // State for the current song's audio element
-  const [audio] = useState(typeof Audio !== 'undefined' && new Audio(path))
+  // Ref for the current song's audio element
+  const audioRef = useRef(typeof Audio !== 'undefined' && new Audio(path))
+  const intervalRef = useRef()
+  const isReady = useRef(false)
 
   // check if is the first time the app is loaded
   const isFirstRun = useRef(true)
-
-  // Ref for the current song's audio element
-  const audioRef = useRef(audio)
-  const intervalRef = useRef()
-  const isReady = useRef(false)
 
   const [appTheme, setAppTheme] = useState('')
 
