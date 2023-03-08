@@ -1,9 +1,9 @@
 export default function commands (props) {
   const allCommands = {
-    svolume: (volume) => props.setVolumeCommand(volume / 100),
-    nextsong: () => props.toNextSong(),
-    prevsong: () => props.toPrevSong(),
-    playpause: () => props.setIsPlaying(!props.isPlaying),
+    setVolume: (volume) => props.setVolumeCommand(volume / 100),
+    nextSong: () => props.toNextSong(),
+    prevSong: () => props.toPrevSong(),
+    playPause: () => props.setIsPlaying(!props.isPlaying),
     about: (
       <span>
         Welcome to the lofi terminal<br />
@@ -14,15 +14,15 @@ export default function commands (props) {
     ),
     help: (
       <span>
-        svolume &lt;VOLUME&gt;  - set volume to &lt;volume&gt; (0-100)<br/>
-        nextsong                - play next song <br/>
-        prevsong                - play previous song <br/>
-        playpause               - play or pauses the song <br/>
-        about                   - get more info <br/>
+        about                   - get more info about this project<br/>
+        clear                   - clear screen <br />
         help                    - show this message <br/>
         contribute              - contribute to the project and share your ideas<br/>
-        clear                   - clear screen  <br />
         displaySongs            - display all songs   <br />
+        setVolume &lt;VOLUME&gt;  - set volume to &lt;volume&gt; (0-100)<br/>
+        nextSong                - play next song <br/>
+        prevSong                - play previous song <br/>
+        playPause               - play or pauses the song <br/>
         changeTheme             - change theme (dark, materialDark, materialOcean, matrix, dracula)
       </span>
     ),
