@@ -1,0 +1,38 @@
+.pomodoro {
+  width: 180px;
+  height: 200px;
+  position: fixed;
+  top: 40%;
+  right: -155px;
+  z-index: 1;
+  transition: 0.5s;
+  background-color: white;
+  border-radius: 10px;
+  display: flex;
+  flex-direction: row;
+}
+
+.active {
+  right: 0;
+}
+
+.label {
+  color: black;
+  width: 30px;
+  height: 100%;
+  display: inline-block;
+  vertical-align: middle;
+  writing-mode: vertical-rl;
+  padding: 2rem 0;
+  height: 100%;
+}
+
+.content  {
+  color: black;
+  width: 100%;
+  border-left: 1px black;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+}
