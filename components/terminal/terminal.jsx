@@ -79,6 +79,7 @@ export default function Terminal () {
         commands={appCommands}
         showControlButtons={false}
         showControlBar={false}
+        errorMessage="Command not found! Type &quot;help&quot; for all available commands "
       />
       </div>
     </TerminalContextProvider>
