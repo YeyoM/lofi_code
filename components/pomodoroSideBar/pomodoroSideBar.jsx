@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from 'react'
+import React, { useState, useEffect, useRef } from 'react'
 
 import classes from './pomodoroSideBar.module.css'
 
@@ -13,6 +13,8 @@ export default function PomodoroSideBar () {
   const [timer, setTimer] = useState('')
   const [timeRemaining, setTimeRemaining] = useState(pomodoroTimeLenght[1])
   const [timerStatus, setTimerStatus] = useState(false)
+  const audioClickRef = useRef(null)
+  const audioAlarmRef = useRef(null)
 
   useEffect(() => {
     const minutes = Math.floor(timeRemaining / 60)
@@ -42,6 +44,8 @@ export default function PomodoroSideBar () {
 
   useEffect(() => {
     if (timeRemaining === 0) {
+      audioAlarmRef.current = new Audio('https://docs.google.com/uc?export=download&id=1kbmZQx9eqX2LkBvsKO_QsyHCEbb7vZTK')
+      audioAlarmRef.current.play()
       if (pomodoroIterator === 0) {
         setPomodoroIterator(pomodoroIterator + 1)
         setGeneralCount(generalCount + 1)
@@ -55,6 +59,8 @@ export default function PomodoroSideBar () {
   }, [timeRemaining, pomodoroIterator, generalCount])
 
   const toggleTimerStatus = () => {
+    audioClickRef.current = new Audio('https://docs.google.com/uc?export=download&id=1FVzg59F2Ixyk8Pglo_uL5jR7nAlv4arM')
+    audioClickRef.current.play()
     if (!timerStatus) {
       setTimerStatus(true)
     } else {

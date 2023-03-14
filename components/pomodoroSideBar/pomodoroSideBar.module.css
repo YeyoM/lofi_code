@@ -6,8 +6,12 @@
   right: -155px;
   z-index: 1;
   transition: 0.3s;
-  background-color: white;
+  background: rgba( 83, 83, 83, 0.25 );
+  box-shadow: 0 8px 32px 0 rgba(50, 50, 50, 0.438);
+  backdrop-filter: blur( 6.5px );
+  -webkit-backdrop-filter: blur( 6.5px );
   border-radius: 10px;
+  border: 1px solid rgba( 255, 255, 255, 0.18 );
   display: flex;
   flex-direction: row;
 }
@@ -17,7 +21,7 @@
 }
 
 .label {
-  color: black;
+  color: white;
   width: 30px;
   height: 100%;
   display: inline-block;
@@ -30,11 +34,11 @@
 
 .label:hover {
   cursor: pointer;
-  background-color: rgb(201, 201, 201);
+  background-color: rgb(70, 70, 70);
 }
 
 .content  {
-  color: black;
+  color: white;
   width: 100%;
   border-left: 1px black;
   display: flex;
@@ -44,12 +48,13 @@
 }
 
 .timerTitle {
-  color: black;
+  color: white;
   margin-top: 1rem;
+  font-size: large;
 }
 
 .timer {
-  color: black;
+  color: white;
   margin-top: 1rem;
 }
 
@@ -58,6 +63,7 @@
   padding: 0.2rem 0.8rem;
   margin-top: 1rem;
   transition: 0.2s;
+  border: 1px solid black;
 }
 
 .start:hover {
