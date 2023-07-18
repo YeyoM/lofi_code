@@ -5,6 +5,7 @@
 
 .audioControlsLeft {
   justify-content: start;
+  flex-direction: column;
 }
 
 .audioControlsCenter {
